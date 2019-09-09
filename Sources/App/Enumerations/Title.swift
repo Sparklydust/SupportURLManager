@@ -9,5 +9,5 @@ import Foundation
 
 //MARK: - Tile of website page
 enum Title: String {
-  case ukContact = "Contact"
+  case enContact = "Contact"
 }

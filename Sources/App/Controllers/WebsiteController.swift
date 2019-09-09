@@ -6,8 +6,8 @@ struct WebsiteController: RouteCollection {
   func boot(router: Router) throws {
     //MARK: AirsoftCalculator
     let airsoftCalculatorRoutes = router.grouped("airsoftcalculator")
-    airsoftCalculatorRoutes.get(CountryCode.uk.rawValue, use: ukSupportURL)
-    airsoftCalculatorRoutes.get(CountryCode.fr.rawValue, use: frSupportURL)
+    airsoftCalculatorRoutes.get(CountryCode.england.rawValue, use: ukSupportURL)
+    airsoftCalculatorRoutes.get(CountryCode.france.rawValue, use: frSupportURL)
   }
 }
 
@@ -15,8 +15,8 @@ struct WebsiteController: RouteCollection {
 extension WebsiteController {
   //MARK: English AirsoftCalculator.app Support URL path
   func ukSupportURL(_ req: Request) throws -> Future<View> {
-    let context = IndexContext(countryCode: CountryCode.uk.rawValue,
-                               title: Title.ukContact.rawValue,
+    let context = IndexContext(countryCode: CountryCode.england.rawValue,
+                               title: Title.enContact.rawValue,
                                appName: App.AirsoftCalculator.rawValue
     )
     return try req.view().render("enAirsoftCalculator", context)
@@ -24,8 +24,8 @@ extension WebsiteController {
   
   //MARK: French AirsoftCalculator.app Support URL path
   func frSupportURL(_ req: Request) throws -> Future<View> {
-    let context = IndexContext(countryCode: CountryCode.fr.rawValue,
-                               title: Title.ukContact.rawValue,
+    let context = IndexContext(countryCode: CountryCode.france.rawValue,
+                               title: Title.enContact.rawValue,
                                appName: App.AirsoftCalculator.rawValue
     )
     return try req.view().render("frAirsoftCalculator", context)

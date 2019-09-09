@@ -9,6 +9,6 @@ import Foundation
 
 //MARK: - Enumeration of country code
 enum CountryCode: String {
-  case fr = "fr"
-  case uk = "en"
+  case france = "fr"
+  case england = "en"
 }
