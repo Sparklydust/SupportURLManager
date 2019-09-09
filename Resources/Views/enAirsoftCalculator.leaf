@@ -1,0 +1,6 @@
+#set("content") {
+<h1>Customer Support</h1>
+
+<h2>airsoftcalculator@oulook.com</2>
+}
+#embed("base")
