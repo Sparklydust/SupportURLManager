@@ -6,15 +6,20 @@ struct WebsiteController: RouteCollection {
   func boot(router: Router) throws {
     //MARK: AirsoftCalculator
     let airsoftCalculatorRoutes = router.grouped("airsoftcalculator")
-    airsoftCalculatorRoutes.get(CountryCode.england.rawValue, use: ukSupportURL)
-    airsoftCalculatorRoutes.get(CountryCode.france.rawValue, use: frSupportURL)
+    airsoftCalculatorRoutes.get(CountryCode.england.rawValue, use: enAirsoftCalculatorSupportURL)
+    airsoftCalculatorRoutes.get(CountryCode.france.rawValue, use: frAirsoftCalculatorSupportURL)
+    
+    //MARK: Partages
+    let partagesRoutes = router.grouped("partages")
+    partagesRoutes.get(CountryCode.england.rawValue, use: enPartagesSupportURL)
+    partagesRoutes.get(CountryCode.france.rawValue, use: frPartagesSupportURL)
   }
 }
 
 //MARK: - AirsoftCalculator.app routes methods
 extension WebsiteController {
   //MARK: English AirsoftCalculator.app Support URL path
-  func ukSupportURL(_ req: Request) throws -> Future<View> {
+  func enAirsoftCalculatorSupportURL(_ req: Request) throws -> Future<View> {
     let context = IndexContext(countryCode: CountryCode.england.rawValue,
                                title: Title.enContact.rawValue,
                                appName: App.AirsoftCalculator.rawValue
@@ -23,12 +28,33 @@ extension WebsiteController {
   }
   
   //MARK: French AirsoftCalculator.app Support URL path
-  func frSupportURL(_ req: Request) throws -> Future<View> {
+  func frAirsoftCalculatorSupportURL(_ req: Request) throws -> Future<View> {
     let context = IndexContext(countryCode: CountryCode.france.rawValue,
                                title: Title.enContact.rawValue,
                                appName: App.AirsoftCalculator.rawValue
     )
     return try req.view().render("frAirsoftCalculator", context)
+  }
+}
+
+//MARK: - Partages.app routes methods
+extension WebsiteController {
+  //MARK: English Partages.app Support URL
+  func enPartagesSupportURL(_ req: Request) throws -> Future<View> {
+    let context = IndexContext(countryCode: CountryCode.england.rawValue,
+                               title: Title.enContact.rawValue,
+                               appName: App.Partages.rawValue
+    )
+    return try req.view().render("enPartages", context)
+  }
+  
+  //MARK: French Partages.app Support URL
+  func frPartagesSupportURL(_ req: Request) throws -> Future<View> {
+    let context = IndexContext(countryCode: CountryCode.france.rawValue,
+                               title: Title.enContact.rawValue,
+                               appName: App.Partages.rawValue
+    )
+    return try req.view().render("frPartages", context)
   }
 }
 

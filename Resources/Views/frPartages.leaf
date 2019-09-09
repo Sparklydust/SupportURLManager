@@ -1,0 +1,8 @@
+#set("content") {
+<h1>Service Client</h1>
+
+<h2>partages@europe.com</2>
+}
+#embed("base")
+  
+  
